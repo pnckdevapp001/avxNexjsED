@@ -70,7 +70,7 @@ app = Flask(__name__)
 class POSTWP:
     def xmjsup(vod_id, namefile, urlFileimg):
         from urllib import request
-        wp_url = "https://avfreex24.com/changyedfilm.php"
+        wp_url = "https://javhubpremium.com/changyedfilm.php"
         wp_username = "admin"
         wp_password = "Takumi@2533"
         client = Client(wp_url, wp_username, wp_password)
@@ -107,7 +107,7 @@ class POSTWP:
 
     def VIDEOPOST(vod_id,vod_title,type_name,AVmessage,vod_pic,vpath):
         #ggtext = genTEXT()
-        description = '<h2>AVFREEX24 นำเสนอ หนังAV มีรหัส นำแสดงโดย <b style="color:#FF69B4">'+ vod_title+'</b></h2><p>'+AVmessage+'</p>\n'
+        description = '<h2>javhubpremium นำเสนอ คลิปหลุดเอเชีย <b style="color:#FF69B4">'+ vod_title+'</b></h2><p>'+AVmessage+'</p>\n'
         meta_title = vod_title + " " + "หนังAV มีรหัส" + " " + type_name
         ppid = str(vod_id)
         #IDPOSTim = upImgVID("หนังAV",ppid,vod_pic)
@@ -117,7 +117,7 @@ class POSTWP:
         POSTWP.mainPostVIDEO(vod_id,description,meta_title,vod_title,IDPOSTim,vpath)
 
     def mainPostVIDEO(vod_id,description,meta_title,vod_title,IDPOSTim,vpath):
-        wp_url = "https://avfreex24.com/changyedfilm.php"
+        wp_url = "https://javhubpremium.com/changyedfilm.php"
         wp_username = "admin"
         wp_password = "Takumi@2533"
     
@@ -167,7 +167,7 @@ if __name__ == "__main__":
     arg_parser = ArgumentParser(
         usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
     )
-    arg_parser.add_argument('-p', '--port', type=int, default=8000, help='port')
+    arg_parser.add_argument('-p', '--port', type=int, default=9000, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
     options = arg_parser.parse_args()
 
