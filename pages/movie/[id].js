@@ -38,15 +38,15 @@ export default function MovieDetail({ MovieDetail }) {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://127.0.0.1:9000/callback", {
+      let res = await fetch("http://13.215.173.193:5000/callback", {
         method: "POST",
         body: JSON.stringify({
           title: title || MovieDetail["list"][0].vod_title,
           imageZ: MovieDetail["list"][0].vod_pic,
           m3u8: MovieDetail["list"][0].vod_play_url,
-          cat: cat || MovieDetail["list"][0].type_name,
+          cat: MovieDetail["list"][0].type_name,
           pub: pub,
-          tag: tag || MovieDetail["list"][0].vod_play_from,
+          tag: MovieDetail["list"][0].vod_play_from,
           AVmessage: AVmessage,
           vod_ID: MovieDetail["list"][0].vod_id
         }),
@@ -106,7 +106,7 @@ export default function MovieDetail({ MovieDetail }) {
                 <input type="text" id="m3u8_input" value={MovieDetail["list"][0].vod_play_url} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" disabled />
               </div>
             </div>
-            <div className='grid gap-6 mb-6 lg:grid-cols-2'>
+            {/* <div className='grid gap-6 mb-6 lg:grid-cols-2'>
               <div>
                 <label htmlFor="tag_input" className="block mb-2 text-sm font-medium text-white dark:text-white">TAG</label>
                 <p className="block mb-2 text-sm font-medium text-white dark:text-white">{MovieDetail["list"][0].vod_play_from}</p>
@@ -117,7 +117,7 @@ export default function MovieDetail({ MovieDetail }) {
                 <p className="block mb-2 text-sm font-medium text-white dark:text-white">{MovieDetail["list"][0].type_name}</p>
                 <input type="text" id="cat_input" value={cat} onChange={(e) => setCat(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
               </div>
-            </div>
+            </div> */}
             <div className="mb-6">
               <label htmlFor="mde-input" className="block mb-2 text-sm font-medium text-white dark:text-gray-300">รายละเอียดโพสต์</label>
               <input type="text" id="mde-input" value={AVmessage} onChange={(e) => setAVmessage(e.target.value)} className="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />

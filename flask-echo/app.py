@@ -105,7 +105,7 @@ class POSTWP:
         except Exception as e:
             print(str(e))
 
-    def VIDEOPOST(vod_id,vod_title,type_name,AVmessage,vod_pic,vpath):
+    def VIDEOPOST(vod_id,vod_title,type_name,AVmessage,vod_pic,vpath,pub):
         #ggtext = genTEXT()
         description = '<h2>javhubpremium นำเสนอ คลิปหลุดเอเชีย <b style="color:#FF69B4">'+ vod_title+'</b></h2><p>'+AVmessage+'</p>\n'
         meta_title = vod_title + " " + "หนังAV มีรหัส" + " " + type_name
@@ -114,9 +114,9 @@ class POSTWP:
         IDPOSTim = POSTWP.xmjsup("หนังAV มีรหัส",ppid, vod_pic)
         #vid_post = '[fvplayer src="'+vpath+'" ]'
         print(vod_title,"OK")
-        POSTWP.mainPostVIDEO(vod_id,description,meta_title,vod_title,IDPOSTim,vpath)
+        POSTWP.mainPostVIDEO(vod_id,description,meta_title,vod_title,IDPOSTim,vpath,pub)
 
-    def mainPostVIDEO(vod_id,description,meta_title,vod_title,IDPOSTim,vpath):
+    def mainPostVIDEO(vod_id,description,meta_title,vod_title,IDPOSTim,vpath,pub):
         wp_url = "https://javhubpremium.com/changyedfilm.php"
         wp_username = "admin"
         wp_password = "Takumi@2533"
@@ -126,7 +126,7 @@ class POSTWP:
         post.slug = vod_title[:21] +"-"+str(vod_id)
         post.title = vod_title[:40]
         post.content = meta_title +'<br/>'+ description
-        post.post_status = 'publish'
+        post.post_status = pub
         post.thumbnail = IDPOSTim
         post.Large = IDPOSTim
         post.excerpt = meta_title
@@ -155,9 +155,10 @@ def callback():
     type_name = body["cat"]
     AVmessage = body["AVmessage"]
     vod_id = body["vod_ID"]
+    pub = body["pub"]
     try:
         print(body["imageZ"])
-        POSTWP.VIDEOPOST(vod_id,vod_title,type_name,AVmessage,vod_pic.replace("http://", "https://"),vpath.replace("http://", "https://"))
+        POSTWP.VIDEOPOST(vod_id,vod_title,type_name,AVmessage,vod_pic.replace("http://", "https://"),vpath.replace("http://", "https://"),pub)
     except:
         abort(400)
 
