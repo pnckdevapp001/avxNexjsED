@@ -38,7 +38,7 @@ export default function MovieDetail({ MovieDetail }) {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("https://httpbin.org/post", {
+      let res = await fetch("http://127.0.0.1:8000/callback", {
         method: "POST",
         body: JSON.stringify({
           title: title || MovieDetail["list"][0].vod_title,
@@ -48,6 +48,7 @@ export default function MovieDetail({ MovieDetail }) {
           pub: pub,
           tag: tag || MovieDetail["list"][0].vod_play_from,
           AVmessage: AVmessage,
+          vod_ID: MovieDetail["list"][0].vod_id
         }),
       });
       let resJson = await res.json();
